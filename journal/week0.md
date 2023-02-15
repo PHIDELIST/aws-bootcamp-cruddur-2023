@@ -25,3 +25,15 @@ I created the SNS topic through the AWS CLI by running the following command.
 ``` aws sns create tpoic -- name billing-alarm ```
 + The following is the screenshot of the my SNS topic:
 ![SNS topic](/_docs/assets/SNS-topic.png)
+### creation of alarm 
+I created  a bugdet alarm this is to help me avoid over pending during the bootcamp.
+i created a budget and notifications json files in my code repo.
++ Then I used the following AWS cli command to create the cost and usage budget
+```aws budgets create-budget \
+    --account-id 576997243977 \
+    --budget file://aws/json/budget.json \
+    --notifications-with-subscribers file://aws/json/notifications-with-subscribers.json
+```
++ The following is my screenshots of the budget
+![MY bootcamp budget](/_docs/assets/budget.png)
++
