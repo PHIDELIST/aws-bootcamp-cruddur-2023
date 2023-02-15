@@ -39,5 +39,9 @@ i created a budget and notifications json files in my code repo.
 ![My billing-alarm-screenshot](/_docs/assets/Billing-alarm.png)
 ## Recreation of Napkin diagram 
 I recreated a napkin diagram for Cruddur application
-[Here is the linked lucid link to the napkin diagram](https://lucid.app/lucidchart/ac4e3a51-6dfd-4ffa-a6e4-791d4559a406/edit?viewport_loc=-246%2C-74%2C1707%2C701%2C0_0&invitationId=inv_eddda734-d330-4be9-b21b-38221b9423a5)
+[Here is the lucid link to the napkin diagram](https://lucid.app/lucidchart/ac4e3a51-6dfd-4ffa-a6e4-791d4559a406/edit?viewport_loc=-246%2C-74%2C1707%2C701%2C0_0&invitationId=inv_eddda734-d330-4be9-b21b-38221b9423a5)
 ![Cruddur app napkin diagram](/_docs/assets/CRUDDUR_APP_napkin_diagram.png)
+## Recreation of Logical diagram
+I used lucid chart to recreate Cruddur app logical diagram
+[Here is the lucid link to the logical diagram](https://lucid.app/lucidchart/b896f0bc-bdb4-4ce6-84eb-9b58dcae3705/edit?viewport_loc=261%2C127%2C1735%2C713%2C0_0&invitationId=inv_4ac188af-3926-49d5-bf2d-09a48c0fa93b)
+![Cruddur logical diagram](/_docs/assets/Phidelist_Omuya_cruddur_Logical_diagram.png)
