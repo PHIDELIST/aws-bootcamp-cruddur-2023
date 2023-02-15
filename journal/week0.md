@@ -34,6 +34,6 @@ i created a budget and notifications json files in my code repo.
     --budget file://aws/json/budget.json \
     --notifications-with-subscribers file://aws/json/notifications-with-subscribers.json
 ```
-+ The following is my screenshots of the budget
++ The following is my screenshots of the budget and billing alarm 
 ![MY bootcamp budget](/_docs/assets/budget.png)
-+
+![My billing-alarm-screenshot](/_docs/assets/Billing-alarm.png)
