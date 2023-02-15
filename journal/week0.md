@@ -21,6 +21,7 @@ vscode:
 ## Creation of billing alarm
 My AWS account usually have billing enable with preference of receive billing alerts.
 ### creation of SNS topic to be used with the alarm
-I created the SNS topic through the AWS CLI by running the following command
+I created the SNS topic through the AWS CLI by running the following command.
 ``` aws sns create tpoic -- name billing-alarm ```
-+ The following is the screenshot of the my SNS topic
++ The following is the screenshot of the my SNS topic:
+![SNS topic](/_docs/assets/SNS-topic.png)
