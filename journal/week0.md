@@ -37,3 +37,7 @@ i created a budget and notifications json files in my code repo.
 + The following is my screenshots of the budget and billing alarm 
 ![MY bootcamp budget](/_docs/assets/budget.png)
 ![My billing-alarm-screenshot](/_docs/assets/Billing-alarm.png)
+## Recreation of Napkin diagram 
+I recreated a napkin diagram for Cruddur application
+[Here is the linked lucid link to the napkin diagram](https://lucid.app/lucidchart/ac4e3a51-6dfd-4ffa-a6e4-791d4559a406/edit?viewport_loc=-246%2C-74%2C1707%2C701%2C0_0&invitationId=inv_eddda734-d330-4be9-b21b-38221b9423a5)
+![Cruddur app napkin diagram](/_docs/assets/CRUDDUR_APP_napkin_diagram.png)
