@@ -47,6 +47,8 @@ I used lucid chart to recreate Cruddur app logical diagram
 ![Cruddur logical diagram](/_docs/assets/Phidelist_Omuya_cruddur_Logical_diagram.png)
 ### HOMEWORK CHALLENGES
 ## CI/CD logical diagram
-I used lucid charts to create this CI/CD code pipeline [Here is the link to lucid charts for CI/CD logical diagram](https://lucid.app/lucidchart/ca27e965-b0eb-4568-97a2-4a0d8a8c43b9/edit?viewport_loc=-274%2C-368%2C1707%2C701%2C0_0&invitationId=inv_fc03974c-4b9b-465d-839d-635fd63d367f)
++ I used lucid charts to create this CI/CD code pipeline [Here is the link to lucid charts for CI/CD logical diagram](https://lucid.app/lucidchart/ca27e965-b0eb-4568-97a2-4a0d8a8c43b9/edit?viewport_loc=-274%2C-368%2C1707%2C701%2C0_0&invitationId=inv_fc03974c-4b9b-465d-839d-635fd63d367f)
 ![CICD Logical diagram](/_docs/assets/Cruddur_CI_CD_diagram.png)
+**AWS RESOURCE HEALTH MONITORING**
+I linked my AWS health dashboard with my SNS topic through AWS EventBridge to monitor my resources health.
 
