@@ -45,3 +45,6 @@ I recreated a napkin diagram for Cruddur application
 I used lucid chart to recreate Cruddur app logical diagram
 [Here is the lucid link to the logical diagram](https://lucid.app/lucidchart/b896f0bc-bdb4-4ce6-84eb-9b58dcae3705/edit?viewport_loc=261%2C127%2C1735%2C713%2C0_0&invitationId=inv_4ac188af-3926-49d5-bf2d-09a48c0fa93b)
 ![Cruddur logical diagram](/_docs/assets/Phidelist_Omuya_cruddur_Logical_diagram.png)
+### Homework Challenges
+### CI/CD logical diagram
+
