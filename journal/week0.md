@@ -46,5 +46,7 @@ I used lucid chart to recreate Cruddur app logical diagram
 [Here is the lucid link to the logical diagram](https://lucid.app/lucidchart/b896f0bc-bdb4-4ce6-84eb-9b58dcae3705/edit?viewport_loc=261%2C127%2C1735%2C713%2C0_0&invitationId=inv_4ac188af-3926-49d5-bf2d-09a48c0fa93b)
 ![Cruddur logical diagram](/_docs/assets/Phidelist_Omuya_cruddur_Logical_diagram.png)
 ### Homework Challenges
-### CI/CD logical diagram
+## CI/CD logical diagram
+I used lucid charts to create this CI/CD code pipeline [Here is the link to lucid charts for CI/CD logical diagram](https://lucid.app/lucidchart/ca27e965-b0eb-4568-97a2-4a0d8a8c43b9/edit?viewport_loc=-274%2C-368%2C1707%2C701%2C0_0&invitationId=inv_fc03974c-4b9b-465d-839d-635fd63d367f)
+![CICD Logical diagram](/_docs/assets/Cruddur_CI_CD_diagram.png)
 
