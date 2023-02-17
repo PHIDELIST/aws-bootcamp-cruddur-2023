@@ -52,4 +52,6 @@ I used lucid chart to recreate Cruddur app logical diagram
 + **AWS RESOURCE HEALTH MONITORING**
 I linked my AWS health dashboard with my SNS topic through AWS EventBridge to monitor and notify me when there is an health issue(change in state on my instances).
 ![AWS heath](/_docs/assets/AWS-health-screenshot.png)
-
+### WELL ARCHITECTED FRAMEWORK SUMMARY SCREENSHOTS
+![well architected overview](/_docs/assets/well-architected-overview.png)
+![well architected properties section](/_docs/assets/cruddur-W-A-screenshot.png)
