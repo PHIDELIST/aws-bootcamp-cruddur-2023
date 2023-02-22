@@ -146,5 +146,7 @@ volumes:
   db:
     driver: local
 ````
-
+## React page for notifications 
+I managed to follow Andrew browns' instructions on adding notification page 
+ 
 
