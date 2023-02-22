@@ -41,8 +41,6 @@ CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567"]
 + I used the following code to run the container 
  ```docker container run --rm -p 4567:4567 -d backend-flask```
  #### checking container images and running container Ids 
- + ```docker ps
- ``` to check running containers
- + ```docker images
- ``` to check container images
+ + ```docker ps```to check running containers
+ + ```docker images``` to check container images
  
