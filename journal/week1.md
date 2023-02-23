@@ -93,7 +93,7 @@ The following code of commands is added to the gitpod
       sudo apt install -y postgresql-client-13 libpq-dev
  ```
 ### Docker-compose file
-```yml
+```.yml
 version: "3.8"
 services:
   backend-flask:
@@ -187,3 +187,9 @@ I managed to follow Andrew browns' instructions on adding notification page.
 I successfully added the notification page and ensured it is working.
  ![Notification page screenshot](/_docs/assets/notification_page.png)
 
+# Homework challenges
++ I updated the dockerfiles to add health checks on boot-up 
+### Frontend dockerfile healthcheck
+```HEALTHCHECK CMD curl --fail http://localhost:3000 || exit 1 ```
+### Backend Dockerfile healthcheck
+```HEALTHCHECK CMD curl --fail http://localhost:4567 || exit 1 ```
