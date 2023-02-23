@@ -195,11 +195,11 @@ I successfully added the notification page and ensured it is working.
 ```HEALTHCHECK CMD curl --fail http://localhost:4567 || exit 1 ```
 ### Docker container best practices
 + Use of non root user accounts
-This is to help avoid cross site scripting  attacks
+:This is to help avoid cross site scripting  attacks
 + Avoid building secrets into images
-Never put any secrets into the images as they will be available in several stages of development.
+:Never put any secrets into the images as they will be available in several stages of development.
 + Avoid the use of untrusted base images
-only get images from trusted image repositories
+:only get images from trusted image repositories
 + use shared storage for images
 + Scan images regularly 
 + use secure image registy
