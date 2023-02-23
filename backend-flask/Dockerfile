@@ -22,6 +22,8 @@ COPY . .
 # Inside container and will remain set when the container is running
 ENV FLASK_ENV=development
 
+HEALTHCHECK CMD curl --fail http://localhost:4567 || exit 1   
+
 EXPOSE ${PORT}
 
 # CMD(command)
