@@ -146,7 +146,20 @@ volumes:
   db:
     driver: local
 ````
+## Flask backend endpoint for notification
+In the file ```app.py``` I added the following code for the notification endpoint
+```.py
+# import notification activities from services
+from services.notifications_activities import *
+# get operation for the endpoint
+@app.route("/api/activities/notifications", methods=['GET'])
+def data_notifications():
+  data = NotificationsActivities.run()
+  return data, 200
+```
+
 ## React page for notifications 
-I managed to follow Andrew browns' instructions on adding notification page 
+I managed to follow Andrew browns' instructions on adding notification page.
+I successfully added the notification page and ensured it is working.
  ![Notification page screenshot](/_docs/assets/notification_page.png)
 
