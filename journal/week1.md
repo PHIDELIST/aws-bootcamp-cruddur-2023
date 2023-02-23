@@ -146,6 +146,9 @@ volumes:
   db:
     driver: local
 ````
+## Confirming connection to the postgres database
+![postgres database connection screenshot](/_docs/assets/connection_psql.png)
+![psql templetes screenshot](/_docs/assets/psql-tables.png)
 ## Flask backend endpoint for notification
 In the file ```app.py``` I added the following code for the notification endpoint
 ```.py
