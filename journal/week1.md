@@ -149,6 +149,27 @@ volumes:
 ## Confirming connection to the postgres database
 ![postgres database connection screenshot](/_docs/assets/connection_psql.png)
 ![psql templetes screenshot](/_docs/assets/psql-tables.png)
+## Updating openAPI to add notification endpoint
+I added the following code to the openapi
+```.yml
+ /api/activities/notifications:
+    get:
+      description: 'return a feed of activities for all those i follow'
+      tags:
+        - activies
+      parameters: []
+      responses:
+        '200':
+          description: return array of activities
+          content:
+            application/json:
+              schema:
+               type: array
+               items: 
+                $ref: '#/components/schemas/Activity'
+```
++ notification API response sample screenshot
+![notifation api screenshot](/_docs/assets/notificatio_api_response_sample.png)
 ## Flask backend endpoint for notification
 In the file ```app.py``` I added the following code for the notification endpoint
 ```.py
