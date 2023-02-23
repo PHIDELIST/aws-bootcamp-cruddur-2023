@@ -168,6 +168,8 @@ I added the following code to the openapi
                items: 
                 $ref: '#/components/schemas/Activity'
 ```
++ notification API response sample screenshot
+![notifation api screenshot](/_docs/assets/notificatio_api_response_sample.png)
 ## Flask backend endpoint for notification
 In the file ```app.py``` I added the following code for the notification endpoint
 ```.py
