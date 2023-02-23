@@ -148,5 +148,5 @@ volumes:
 ````
 ## React page for notifications 
 I managed to follow Andrew browns' instructions on adding notification page 
- 
+ ![Notification page screenshot](/_docs/assets/notification_page.png)
 
