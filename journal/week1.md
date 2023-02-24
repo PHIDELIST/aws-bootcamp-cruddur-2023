@@ -191,8 +191,8 @@ I successfully added the notification page and ensured it is working.
 ## Push and tag a image to DockerHub
 I managed to push an image to the dockerhub
 First you have to tag the image with the repository name the you push it.
-![docker image push to dockerhub]()
-![dockerhub repo]()
+![docker image push to dockerhub](/_docs/assets/docker-hub-backend.png)
+
 ## Learn how to install Docker on your localmachine and get the same containers running outside of Gitpod / Codespaces
 image to run crudder containers locally on decker desktop
 ![dockerdesktop]()
