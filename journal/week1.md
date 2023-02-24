@@ -195,7 +195,7 @@ First you have to tag the image with the repository name the you push it.
 
 ## Learn how to install Docker on your localmachine and get the same containers running outside of Gitpod / Codespaces
 image to run crudder containers locally on decker desktop
-![dockerdesktop]()
+![dockerdesktop](/_docs/assets/cruddur-docker-local.png)
 ## Launch an EC2 instance that has docker installed, and pull a container to demonstrate you can run your own docker processes. 
 I used the following script as user data to install docker on the ec2 instance during setup
 ```.sh
