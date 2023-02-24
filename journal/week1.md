@@ -206,3 +206,5 @@ sudo service docker start
 sudo systemctl enable docker
 sudo systemctl enable docker
 ```
+
+![ec2 instance with docker installed](/_docs/assets/docker-container-pulled.png)
