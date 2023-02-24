@@ -188,18 +188,21 @@ I successfully added the notification page and ensured it is working.
  ![Notification page screenshot](/_docs/assets/notification_page.png)
 
 # Homework challenges
-+ I updated the dockerfiles to add health checks on boot-up 
-### Frontend dockerfile healthcheck
-```HEALTHCHECK CMD curl --fail http://localhost:3000 || exit 1 ```
-### Backend Dockerfile healthcheck
-```HEALTHCHECK CMD curl --fail http://localhost:4567 || exit 1 ```
-### Docker container best practices
-+ Use of non root user accounts
-:This is to help avoid cross site scripting  attacks
-+ Avoid building secrets into images
-:Never put any secrets into the images as they will be available in several stages of development.
-+ Avoid the use of untrusted base images
-:only get images from trusted image repositories
-+ use shared storage for images
-+ Scan images regularly 
-+ use secure image registy
+## Push and tag a image to DockerHub
+I managed to push an image to the dockerhub
+First you have to tag the image with the repository name the you push it.
+![docker image push to dockerhub]()
+![dockerhub repo]()
+## Learn how to install Docker on your localmachine and get the same containers running outside of Gitpod / Codespaces
+image to run crudder containers locally on decker desktop
+![dockerdesktop]()
+## Launch an EC2 instance that has docker installed, and pull a container to demonstrate you can run your own docker processes. 
+I used the following script as user data to install docker on the ec2 instance during setup
+```.sh
+#!/bin/bash
+sudo yum update -y
+sudo amazon-linux-extras install docker
+sudo service docker start
+sudo systemctl enable docker
+sudo systemctl enable docker
+```
