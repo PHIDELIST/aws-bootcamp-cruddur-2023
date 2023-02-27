@@ -46,10 +46,14 @@ CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567"]
  #### Checking container logs 
  Return the container id into an ENV vat
  ``` CONTAINER_ID=$(docker run --rm -p 4567:4567 -d backend-flask)
+ ```
  I used the following command to check log of backend container
- ```docker logs CONTAINER_ID -f```
+ ```
+ docker logs CONTAINER_ID -f
+ ```
  + ***To gain access to a container***
- ``` docker exec CONTAINER_ID -it /bin/bash```
+ ``` docker exec CONTAINER_ID -it /bin/bash
+ ```
  ## Containerizing Frontend
  ### Run npm install to copy contents of node_modules
  ```cd frontend-react-js
