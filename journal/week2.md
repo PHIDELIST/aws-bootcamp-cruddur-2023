@@ -50,4 +50,57 @@ Put the following Env Vars to ```backend-flask``` in docker compose
  ***Dashboard screenshot***
 ![Honeycomb dashboard screenshot](/_docs/assets/honeycomb-dashboard.png)
 
+## Rollbar
+In the Rollbar website create a project called ```Cruddur```
+Add dependancies to ```requirements.txt``` then install them.
+```.txt
+blinker
+rollbar
+```
+grab the access token from the project created in rollbar
+```
+export ROLLBAR_ACCESS_TOKEN="a729764*0e0a4025949c280a1f****"
+gp env ROLLBAR_ACCESS_TOKEN="a729764**e0a4025949c280a1*****"
+```
+Add the following to backend-flask ```docker-compose.yml```
+```.yml
+ROLLBAR_ACCCESS_TOKEN: "${ROLLBAR_ACCCESS_TOKEN}"
+```
+Add the following to ```app.py```
+```.py
+#rollbar------------
+import os
+import rollbar
+import rollbar.contrib.flask
+from flask import got_request_exception
+```
+Below ```app = Flask(__name__)```
+```.py
+#rollbar-------------------------
+rollbar_access_token = os.getenv('ROLLBAR_ACCESS_TOKEN')
+@app.before_first_request
+def init_rollbar():
+    """init rollbar module"""
+    rollbar.init(
+        # access token
+        'a729764c0e0a4025949c280a1f323173',
+        # environment name
+        'production',
+        # server root directory, makes tracebacks prettier
+        root=os.path.dirname(os.path.realpath(__file__)),
+        # flask already sets up logging
+        allow_logging_basic_config=False)
+
+    # send exceptions from `app` to rollbar, using flask's signal system.
+    got_request_exception.connect(rollbar.contrib.flask.report_exception, app
+ # create an itentional error function to test our instrumentation 
+ #rollbar endpoint--------
+@app.route('/rollbar/test')
+def rollbar_test():
+    rollbar.report_message('Hello World!', 'warning')
+    return "Hello World!"
+
+ ```
+    
+
 
