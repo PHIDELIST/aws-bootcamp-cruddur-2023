@@ -99,8 +99,8 @@ def init_rollbar():
 def rollbar_test():
     rollbar.report_message('Hello World!', 'warning')
     return "Hello World!"
-
  ```
+![Rollbar dashboard screenshot](/_docs/assets/ROLLBAR-DASHBOARD.png)
     
 
 
