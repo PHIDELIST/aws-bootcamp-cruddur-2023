@@ -102,5 +102,39 @@ def rollbar_test():
  ```
 ![Rollbar dashboard screenshot](/_docs/assets/ROLLBAR-DASHBOARD.png)
     
+## CloudWatch Logs
+Add ```watchtower``` to the ```requirements.txt``` then run ```pip install -r requirements.txt```
+set the env var in backend-flask for ```docker-compose.yml```
+```.yml
+      AWS_DEFAULT_REGION: "${AWS_DEFAULT_REGION}"
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+```
+Add the following to ```app.py```
+```.py
+# cloudwatch logs
+import watchtower
+import logging
+from time import strftime
+Configuring Logger to Use CloudWatch
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.DEBUG)
+console_handler = logging.StreamHandler()
+cw_handler = watchtower.CloudWatchLogHandler(log_group='cruddur')
+LOGGER.addHandler(console_handler)
+LOGGER.addHandler(cw_handler)
+LOGGER.info("test log")
+```
+under ```app = Flask(__name__)``` add
+```.py
+# cloudwatch logs
+@app.after_request
+def after_request(response):
+    timestamp = strftime('[%Y-%b-%d %H:%M]')
+    LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
+    return response
+```
+![cloudwatch dashboard screenshot](/_docs/assets/cloudwatch-logs.png)
+
 
 
