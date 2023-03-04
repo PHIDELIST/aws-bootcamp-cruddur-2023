@@ -47,6 +47,10 @@ Put the following Env Vars to ```backend-flask``` in docker compose
  OTEL_EXPORTER_OTLP_ENDPOINT: "https://api.honeycomb.io"
  OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=${HONEYCOMB_API_KEY}" 
  ````
+ To trace the activities.home add the following
+```.py
+from opentelemetry import trace
+```
  ***Dashboard screenshot***
 ![Honeycomb dashboard screenshot](/_docs/assets/honeycomb-dashboard.png)
 
@@ -135,7 +139,83 @@ def after_request(response):
     LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
     return response
 ```
+To trace the activities.home add the following
+```.py
+import logging
+```
 ![cloudwatch dashboard screenshot](/_docs/assets/cloudwatch-logs.png)
+
+## Instrumenting X-Ray for flask
+Put the env var 
+```export AWS_REGION="us-east-1"
+   gp env AWS_REGION="us-east-1"
+```
+add ```aws-xray-sdk``` to ```requirements.txt``` then run ```pip install -r requirements.txt``` to install the dependencies.
+Add then following to ```app.py```
+```.py
+#x-ray--------------------------
+from aws_xray_sdk.core import xray_recorder
+from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
+
+#x-ray------------------
+xray_url = os.getenv("AWS_XRAY_URL")
+xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
+```
+below ```app = Flask(__name__)``` add the following
+```.py
+#xray------------
+XRayMiddleware(app, xray_recorder)
+````
+To trace the activities.home add the following
+```.py
+tracer = trace.get_tracer("home.activities")
+```
++ setup X-ray resources by creating ```xray.json``` file to ```aws/json``` directory
+```.json
+{
+    "SamplingRule": {
+        "RuleName": "Cruddur",
+        "ResourceARN": "*",
+        "Priority": 9000,
+        "FixedRate": 0.1,
+        "ReservoirSize": 5,
+        "ServiceName": "backend-flask",
+        "ServiceType": "*",
+        "Host": "*",
+        "HTTPMethod": "*",
+        "URLPath": "*",
+        "Version": 1
+    }
+  }
+```
+Run the following command on the terminal
+```
+FLASK_ADDRESS="https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
+aws xray create-group \
+   --group-name "Cruddur" \
+   --filter-expression "service(\"$FLASK_ADDRESS\")"
+```
+Then create a sampling run by running the following command.
+```aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json```
+
+***Adding X-ray Deamon Service to docker compose***
+```.yml
+ xray-daemon:
+    image: "amazon/aws-xray-daemon"
+    environment:
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+      AWS_REGION: "us-east-1"
+    command:
+      - "xray -o -b xray-daemon:2000"
+    ports:
+      - 2000:2000/udp
+```
+In the backend-flask ```docker-compose.yml``` add the following env vars
+```.yml
+AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
+AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
+```
 
 
 
