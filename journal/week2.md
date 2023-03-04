@@ -104,6 +104,7 @@ def rollbar_test():
     
 ## CloudWatch Logs
 Add ```watchtower``` to the ```requirements.txt``` then run ```pip install -r requirements.txt```
+
 set the env var in backend-flask for ```docker-compose.yml```
 ```.yml
       AWS_DEFAULT_REGION: "${AWS_DEFAULT_REGION}"
