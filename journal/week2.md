@@ -216,6 +216,21 @@ In the backend-flask ```docker-compose.yml``` add the following env vars
 AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
 AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 ```
-
+In the ```user_activities.py``` add the following code 
+```.py
+from aws_xray_sdk.core import xray_recorder
+subsegment = xray_recorder.begin_subsegment('mock-data')
+      # xray ---
+      dict = {
+        "now": now.isoformat(),
+        "results-size": len(model['data'])
+      }
+      subsegment.put_metadata('key', dict, 'namespace')
+      xray_recorder.end_subsegment()
+    finally:  
+    #  # Close the segment
+      xray_recorder.end_subsegment()
+```
+![x-ray trace map screenshot](/_docs/assets/x-ray-instrumented.png)
 
 
