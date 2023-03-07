@@ -1,0 +1,5 @@
+Requirement already satisfied: python-jose in /workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages (3.3.0)
+Requirement already satisfied: pyasn1 in /workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages (from python-jose) (0.4.8)
+Requirement already satisfied: rsa in /workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages (from python-jose) (4.9)
+Requirement already satisfied: ecdsa!=0.15 in /workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages (from python-jose) (0.18.0)
+Requirement already satisfied: six>=1.9.0 in /home/gitpod/.pyenv/versions/3.8.16/lib/python3.8/site-packages (from ecdsa!=0.15->python-jose) (1.16.0)
