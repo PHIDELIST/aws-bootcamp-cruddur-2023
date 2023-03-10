@@ -31,6 +31,15 @@ class HomeActivities:
         }],
       },
       {
+        'uuid': '248959df-3079-4947-b847-9e0892d1bab4',
+        'handle':  'Garek',
+        'message': 'My dear doctor, I am just simple tailor',
+        'created_at': (now - timedelta(hours=1)).isoformat(),
+        'expires_at': (now + timedelta(hours=12)).isoformat(),
+        'likes': 0,
+        'replies': []
+      },
+      {
         'uuid': '66e12864-8c26-4c3a-9658-95a10f8fea67',
         'handle':  'Worf',
         'message': 'I am out of prune juice',
@@ -39,15 +48,7 @@ class HomeActivities:
         'likes': 0,
         'replies': []
       },
-      {
-        'uuid': '248959df-3079-4947-b847-9e0892d1bab4',
-        'handle':  'Garek',
-        'message': 'My dear doctor, I am just simple tailor',
-        'created_at': (now - timedelta(hours=1)).isoformat(),
-        'expires_at': (now + timedelta(hours=12)).isoformat(),
-        'likes': 0,
-        'replies': []
-      }
+      
       ]
       
       if cognito_user_id != None:
