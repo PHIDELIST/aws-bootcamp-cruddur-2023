@@ -12,6 +12,11 @@ tasks:
     command: |
              cd frontend-react-js
              npm i
+  - name: upgrade sg-rule
+    command: |
+             export GITPOD_IP=$(curl ifconfig.me)
+             source "$THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule"
+
   - name: postgres
     init: |
       curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
