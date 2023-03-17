@@ -9,7 +9,7 @@ CREATE TABLE public.users (
   display_name text NOT NULL,
   handle text NOT NULL,
   email text NOT NULL,
-  cognito_user_id text NOT NULL ,
+  cognito_user_id text NOT NULL,
   created_at TIMESTAMP default current_timestamp NOT NULL
 );
 
