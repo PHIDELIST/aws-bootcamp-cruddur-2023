@@ -6,10 +6,10 @@ NO_COLOR='\033[0m'
 LABEL="db-setup"
 printf "${CYAN}==== ${LABEL}${NO_COLOR}\n"
 
-bin_path="$(realpath .)/bin"
+bin_path="$(realpath .)"
 
-source "$bin_path/db/drop"
-source "$bin_path/db/create"
-source "$bin_path/db/schema-load"
-source "$bin_path/db/seed"
-source "$bin_path/db/update_cognito_user_ids"
+source "$bin_path/drop"
+source "$bin_path/create"
+source "$bin_path/schema-load"
+source "$bin_path/seed"
+source "$bin_path/update_cognito_user_ids"
