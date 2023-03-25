@@ -147,7 +147,7 @@ response = ddb.create_table(
 print(response)
 ```
 Create new file ```seed```:
-```.sh
+```.py
 
 #!/usr/bin/env python3
 
