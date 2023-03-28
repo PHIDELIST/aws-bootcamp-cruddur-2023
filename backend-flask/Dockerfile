@@ -1,4 +1,4 @@
-FROM python:3.10-slim-buster
+FROM 576997243977.dkr.ecr.us-east-1.amazonaws.com/cruddur-python:3.10-slim-buster
 
 # inside the container
 # makes a new folder inside the container
@@ -20,7 +20,7 @@ COPY . .
 
 # set environment viriables 
 # Inside container and will remain set when the container is running
-ENV FLASK_ENV=development
+ENV FLASK_DEBUG=1
 
 #HEALTHCHECK CMD curl --fail http://localhost:4567 || exit 1   
 
