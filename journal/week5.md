@@ -911,6 +911,8 @@ class Ddb:
       print('== create_message_group.error')
       print(e)
 ```
+**Dynamodb Production Table**
+![Dynamodb production table](/_docs/assets/dynamodbtable.png)
 In dir ```cognito``` make file ```list-users``` in ```/aws-bootcamp-cruddur-2023/backend-flask/bin/cognito/list-users ```
 ```.py
 #!/usr/bin/env python3
@@ -1603,4 +1605,6 @@ Grant permission to the lambda function
     ]
 }
 ```
+**Crudds**
+![Sending cruddus](/_docs/assets/sending-cruuds.png)
       
