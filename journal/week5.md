@@ -738,9 +738,11 @@ NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
 psql $NO_DB_CONNECTION_URL -c "drop database IF EXISTS cruddur;"
 ```
 ## Implement Conversation with Dynamodb
-Change Prod URL in the ```docker-compose.yml``
-From ```#CONNECTION_URL: "${PROD_CONNECTION_URL}" ``` to Local URL ``` CONNECTION_URL: "postgresql://**************:*************** @db:5432/cruddur" ````
-add variable: ```AWS_ENDPOINT_URL: "http://dynamodb-local:8000"
+Change Prod URL in the ```docker-compose.yml```
+From ```#CONNECTION_URL: "${PROD_CONNECTION_URL}"``` 
+to Local URL  
+```CONNECTION_URL: "postgresql://**************:*************** @db:5432/cruddur"```
+add variable: ```AWS_ENDPOINT_URL: "http://dynamodb-local:8000"```
 
 Add new new Object in the file ddb.py in ```/aws-bootcamp-cruddur-2023/backend-flask/lib/ddb.py```
 ```.py
