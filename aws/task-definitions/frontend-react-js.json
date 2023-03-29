@@ -1,3 +1,4 @@
+
 {
     "family": "frontend-react-js",
     "executionRoleArn": "arn:aws:iam::576997243977:role/CruddurServiceExecutionRole",
