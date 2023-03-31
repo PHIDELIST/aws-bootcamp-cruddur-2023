@@ -12,7 +12,7 @@
     "containerDefinitions": [
       {
         "name": "frontend-react-js",
-        "image": "576997243977.dkr.ecr.us-east-1.amazonaws.com/frontend-react-js",
+        "image": "576997243977.dkr.ecr.us-east-1.amazonaws.com/frontend-react-js:latest",
         "essential": true,
         "healthCheck": {
           "command": [
