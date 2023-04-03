@@ -20,7 +20,7 @@ COPY . .
 
 # set environment viriables 
 # Inside container and will remain set when the container is running
-ENV FLASK_DEBUG=1
+#ENV FLASK_DEBUG=1
 
 #HEALTHCHECK CMD curl --fail http://localhost:4567 || exit 1   
 
@@ -28,4 +28,4 @@ EXPOSE ${PORT}
 
 # CMD(command)
 # python3 -m flask run --host=0.0.0.0 --port=4567
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567"]
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567", "--debug"]
