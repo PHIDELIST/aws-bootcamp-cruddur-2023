@@ -4,7 +4,7 @@ ABS_PATH=$(readlink -f "$0")
 FRONTEND_PATH=$(dirname $ABS_PATH)
 BIN_PATH=$(dirname $FRONTEND_PATH)
 PROJECT_PATH=$(dirname $BIN_PATH)
-ENVFILE_PATH="$PROJECT_PATH/frontend-react-js.env"
+ENVFILE_PATH="$PROJECT_PATH/bin/frontend/frontend-react-js.env"
 
 docker run --rm \
   --env-file $ENVFILE_PATH \
