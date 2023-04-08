@@ -29,8 +29,8 @@ tasks:
       sudo apt install -y postgresql-client-13 libpq-dev
   - name: upgrade sg-rule
     command: |
-              export GITPOD_IP=$(curl ifconfig.me)
-              source "$THEIA_WORKSPACE_ROOT/bin/rds/upgrade-sg-rule"
+      export GITPOD_IP=$(curl ifconfig.me)
+      source "$THEIA_WORKSPACE_ROOT/bin/rds/upgrade-sg-rule"
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
