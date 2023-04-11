@@ -399,7 +399,134 @@ aws ec2 authorize-security-group-ingress \
   ```.sh
   aws ecs create-service --cli-input-json file://aws/json/service-frontend-react-js.json
   ```
-  
+  ### Provision and configure Application Load Balancer along with target groups
+  ![loadbalancer](/_docs/assets/ApllibationLoadBalancer-week6.png)
+**Target Groups**
+![Target groups](/_docs/assets/targetgroups-week6.png)
+### Manage domain useing Route53 via hosted zone
+Create a hosted zone in the console than used the provided name servers to update the name servers of the domain ```globalphidelist.tech```
+Then create record for both backend and frontend apps.
+![Route53 hosted zone](/_docs/assets/hostedzone-week6.png)
+**Create a TLS certificate in the Certificate manager and create record in route53**
+![TLS cert](/_docs/assets/TLS-certificate-week6.png)
+## Dockerfiles for production
+#### Backend-flask dockerfile-Prod
+```.yaml
+FROM 576997243977.dkr.ecr.us-east-1.amazonaws.com/cruddur-python:3.10-slim-buster
+# [TODO] For debugging, don't leave these in
+#RUN apt-get update -y
+#RUN apt-get install iputils-ping -y
+# -----
+
+# Inside Container
+# make a new folder inside container
+WORKDIR /backend-flask
+
+# Outside Container -> Inside Container
+# this contains the libraries want to install to run the app
+COPY requirements.txt requirements.txt
+
+# Inside Container
+# Install the python libraries used for the app
+RUN pip3 install -r requirements.txt
+
+# Outside Container -> Inside Container
+# . means everything in the current directory
+# first period . - /backend-flask (outside container)
+# second period . /backend-flask (inside container)
+COPY . .
+
+EXPOSE ${PORT}
+
+# CMD (Command)
+# python3 -m flask run --host=0.0.0.0 --port=4567
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567", "--no-debug","--no-debugger","--no-reload"]
+```
+#### Frontend dockerfile-prod
+```.yaml
+# Base Image ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FROM node:16.18 AS build
+
+ARG REACT_APP_BACKEND_URL
+ARG REACT_APP_AWS_PROJECT_REGION
+ARG REACT_APP_AWS_COGNITO_REGION
+ARG REACT_APP_AWS_USER_POOLS_ID
+ARG REACT_APP_CLIENT_ID
+
+ENV REACT_APP_BACKEND_URL=$REACT_APP_BACKEND_URL
+ENV REACT_APP_AWS_PROJECT_REGION=$REACT_APP_AWS_PROJECT_REGION
+ENV REACT_APP_AWS_COGNITO_REGION=$REACT_APP_AWS_COGNITO_REGION
+ENV REACT_APP_AWS_USER_POOLS_ID=$REACT_APP_AWS_USER_POOLS_ID
+ENV REACT_APP_CLIENT_ID=$REACT_APP_CLIENT_ID
+
+COPY . ./frontend-react-js
+WORKDIR /frontend-react-js
+RUN npm install
+RUN npm run build
+
+# New Base Image ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FROM nginx:1.23.3-alpine
+
+# --from build is coming from the Base Image
+COPY --from=build /frontend-react-js/build /usr/share/nginx/html
+COPY --from=build /frontend-react-js/nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 3000
+```
+### Environmentable variables 
+Create file ```bin/frontend/frontend-react-js.env.erb``` for frontend environmental variables
+```.erb
+REACT_APP_BACKEND_URL=https://4567-<%= ENV['GITPOD_WORKSPACE_ID'] %>.<%= ENV['GITPOD_WORKSPACE_CLUSTER_HOST'] %>
+#REACT_APP_BACKEND_URL: "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
+REACT_APP_AWS_PROJECT_REGION=<%= ENV['AWS_DEFAULT_REGION'] %>
+REACT_APP_AWS_COGNITO_REGION=<%= ENV['AWS_DEFAULT_REGION'] %>
+REACT_APP_AWS_USER_POOLS_ID=us-east-1_yVkVH***
+REACT_APP_CLIENT_ID=61gu3on576acg******
+```
+create file ```/bin/backend/backend-flask.env.erb``` for backend environmental varriables
+```.erb
+AWS_ENDPOINT_URL= http://dynamodb-local:8000
+#CONNECTION_URL: "${PROD_CONNECTION_URL}"
+CONNECTION_URL= postgresql://postgres:password@db:5432/cruddur
+FRONTEND_URL= https://3000-<%= ENV['GITPOD_WORKSPACE_ID'] %>.<%= ENV['GITPOD_WORKSPACE_CLUSTER_HOST'] %>
+BACKEND_URL= https://4567-<%= ENV['GITPOD_WORKSPACE_ID'] %>.<%= ENV['GITPOD_WORKSPACE_CLUSTER_HOST'] %>
+#FRONTEND_URL= https://${CODESPACE_NAME}-3000.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}"
+#BACKEND_URL: "https://${CODESPACE_NAME}-4567.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}"
+OTEL_SERVICE_NAME= backend-flask
+OTEL_EXPORTER_OTLP_ENDPOINT= https://api.honeycomb.io
+OTEL_EXPORTER_OTLP_HEADERS= x-honeycomb-team=<%= ENV['HONEYCOMB_API_KEY'] %>
+AWS_XRAY_URL= *4567-<%= ENV['GITPOD_WORKSPACE_ID'] %>.<%= ENV['GITPOD_WORKSPACE_CLUSTER_HOST'] %>*
+AWS_XRAY_DAEMON_ADDRESS= xray-daemon:2000
+AWS_DEFAULT_REGION=<%= ENV['AWS_DEFAULT_REGION'] %>
+AWS_ACCESS_KEY_ID=<%= ENV['AWS_ACCESS_KEY_ID'] %>
+AWS_SECRET_ACCESS_KEY=<%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+ROLLBAR_ACCCESS_TOKEN=<%= ENV['ROLLBAR_ACCCESS_TOKEN'] %>
+AWS_COGNITO_USER_POOL_ID=us-east-1_yVk****
+AWS_COGNITO_USER_POOL_CLIENT_ID=61gu3on5**********
+```
+### Ruby Scripts to generate .env files
+create file named ```generate-env``` in ```bin/backend```
+```.ruby
+#!/usr/bin/env ruby
+
+require 'erb'
+
+template = File.read 'backend-flask.env.erb'
+content = ERB.new(template).result(binding)
+filename = "backend-flask.env"
+File.write(filename, content)
+```
+create anothe one the frontend in ```bin/frontend```
+```.ruby
+#!/usr/bin/env ruby
+
+require 'erb'
+
+template = File.read 'frontend-react-js.env.erb'
+content = ERB.new(template).result(binding)
+filename = "frontend-react-js.env"
+File.write(filename, content)
+```
 
 
 
