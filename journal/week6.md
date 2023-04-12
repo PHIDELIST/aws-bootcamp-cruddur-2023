@@ -527,7 +527,8 @@ content = ERB.new(template).result(binding)
 filename = "frontend-react-js.env"
 File.write(filename, content)
 ```
-
+***globalphidelist.tech***
+![cruddur screenshot after hosting it](/_docs/assets/timezone.png)
 
 
 
