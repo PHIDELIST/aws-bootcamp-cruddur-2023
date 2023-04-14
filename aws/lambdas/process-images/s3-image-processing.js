@@ -38,7 +38,7 @@ async function uploadProcessedImage(client,dstBucket,dstKey,image){
     Bucket: dstBucket,
     Key: dstKey,
     Body: image,
-    ContentType: 'image/png'
+    ContentType: 'image/jpeg'
   };
   console.log('params',params)
   const command = new PutObjectCommand(params);
