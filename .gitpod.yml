@@ -11,6 +11,9 @@ tasks:
   - name: cdk
     before: |
       npm install aws-cdk -g
+      cd thumbing-serverless-cdk
+      cp .env.exapmle .env
+      npm i
   - name: react-js
     command: |
              source "$THEIA_WORKSPACE_ROOT/bin/frontend/generate-env"
