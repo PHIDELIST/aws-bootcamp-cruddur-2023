@@ -4,7 +4,7 @@ async function main(){
   client = getClient()
   const srcBucket = 'cruddur.thumbing.phidel'
   const srcKey = 'avatar/original/data.jpg'
-  const dstBucket = 'cruddur-thumbs'
+  const dstBucket = 'cruddur.thumbing.phidel'
   const dstKey = 'avatar/processed/data.png'
   const width = 256
   const height = 256

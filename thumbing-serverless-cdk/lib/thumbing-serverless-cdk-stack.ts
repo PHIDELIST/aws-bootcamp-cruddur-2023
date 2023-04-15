@@ -39,6 +39,10 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
       bucketName, 
       folderOutput, 
       folderInput);
+
+    bucket.grantRead(lambda);
+    bucket.grantReadWrite(lambda);
+
     // create topic and subscription
     const snsTopic = this.createSnsTopic(topicName)
     this.createSnsSubscription(snsTopic,webhookUrl)
@@ -76,7 +80,7 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
       handler: 'index.handler',
       code: lambda.Code.fromAsset(functionPath),
       environment:{
-        DEST_BUCKET_NAME: bucketName,
+        DEST_BUCKET_NAME: 'assets.globalphidelist.tech',
         FOLDER_INPUT: folderInput,
         FOLDER_OUTPUT: folderOutput,
         PROCESS_WIDTH: '512',
