@@ -102,12 +102,13 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
 
   }
   //end creating lambda
+
   createS3NotifyToLambda(prefix: string, lambda: lambda.IFunction, bucket: s3.IBucket): void {
     const destination = new s3n.LambdaDestination(lambda);
     bucket.addEventNotification(
       s3.EventType.OBJECT_CREATED_PUT,
-      destination,
-      {prefix: prefix} // folder to contain the original images
+      destination,//
+      //{prefix: prefix} // folder to contain the original images
     )
   }
 
@@ -143,8 +144,8 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
     const destination = new s3n.SnsDestination(snsTopic)
     bucket.addEventNotification(
       s3.EventType.OBJECT_CREATED_PUT, 
-      destination//,
-      //{prefix: prefix} // folder to contain the original images
+      destination,
+      {prefix: prefix} // folder to contain the original images
     );
   }
 
