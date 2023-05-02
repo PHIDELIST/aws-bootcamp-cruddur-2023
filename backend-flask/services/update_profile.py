@@ -36,4 +36,4 @@ class UpdateProfile:
     data = db.query_object_json(sql,{
       'handle': handle
     })
-  return data
+    return data
