@@ -14,7 +14,7 @@ def handler(event:, context:)
   { { 
     headers: {
       "Access-Control-Allow-Headers": "*, Authorization",
-      "Access-Control-Allow-Origin": "https://3000-phidelist-awsbootcampcr-5e2oo8rox8l.ws-eu96b.gitpod.io/",
+      "Access-Control-Allow-Origin": "https://3000-phidelist-awsbootcampcr-5e2oo8rox8l.ws-eu96b.gitpod.io",
       "Access-Control-Allow-Methods": "OPTIONS,GET,POST"
     },
     statusCode: 200, 
