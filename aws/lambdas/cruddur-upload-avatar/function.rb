@@ -11,10 +11,14 @@ def handler(event:, context:)
   url = obj.presigned_url(:put, expires_in: 60 * 5)
   url # this is the data that will be returned
   body = {url: url}.to_json
-  { statusCode: 200, body: body }
-end
+  { { 
+    headers: {
+      "Access-Control-Allow-Headers": "*, Authorization",
+      "Access-Control-Allow-Origin": "https://3000-phidelist-awsbootcampcr-5e2oo8rox8l.ws-eu96b.gitpod.io/",
+      "Access-Control-Allow-Methods": "OPTIONS,GET,POST"
+    },
+    statusCode: 200, 
+    body: body 
 
-puts handler(
-  event: {},
-  context: {}
-)
+  }
+end
