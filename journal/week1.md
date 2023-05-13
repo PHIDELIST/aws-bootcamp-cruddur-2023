@@ -44,7 +44,7 @@ CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567"]
  + ```docker ps```to check running containers
  + ```docker images``` to check container images
  #### Checking container logs 
- Return the container id into an ENV vat
+ Return the container id into an ENV var
  ```.yml
  CONTAINER_ID=$(docker run --rm -p 4567:4567 -d backend-flask)
  ```
