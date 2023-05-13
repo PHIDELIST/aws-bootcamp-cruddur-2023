@@ -48,7 +48,7 @@ aws rds create-db-instance \
   --performance-insights-retention-period 7 \
   --no-deletion-protection
   ```
-  
+![RDS instance created](/_docs/assets/RDS.png)  
 ## Installing Postgres Client
 First set env var for the backend-flask application
 ```
