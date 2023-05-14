@@ -26,7 +26,7 @@ env:
   variables:
     AWS_ACCOUNT_ID: 576997243977
     CONTAINER_NAME: backend-flask
-    IMAGE_URL: 576997243977.dkr.ecr.us-east-1.amazonaws.com
+    IMAGE_URL: 576997243977.dkr.ecr.us-east-1.amazonaws.com/backend-flask:latest
     REPO_NAME: backend-flask:latest
 artifacts:
   files:
