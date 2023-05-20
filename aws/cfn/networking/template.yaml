@@ -4,7 +4,6 @@ Description: |
   - VPC
     - sets DNS hostnames for EC2 instances
     - Only IPV4, IPV6 is disabled
-    - certificate attached from Amazon Certification Manager (ACM)
   - InternetGateway
   - Route Table
     - route to the IGW
