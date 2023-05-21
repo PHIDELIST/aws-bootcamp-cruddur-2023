@@ -6,4 +6,4 @@ stack_name = 'CrdDb'
 [parameters]
 NetworkingStack = 'CrdNet'
 ClusterStack = 'CrdCluster'
-MasterUsername = 'phidelcrud123'
+MasterUsername = 'cruddurroot'
