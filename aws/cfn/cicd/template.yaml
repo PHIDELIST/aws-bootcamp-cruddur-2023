@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: |
-  - CodeStar Connection V2 Github
+  - CodeStar Connection V1 Github
   - CodePipeline
   - Codebuild
 Parameters:
