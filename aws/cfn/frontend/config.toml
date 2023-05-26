@@ -1,0 +1,9 @@
+[deploy]
+bucket = 'cfn-cruddur-artifacts'
+region = 'us-east-1'
+stack_name = 'CrdFrontend'
+
+[parameters]
+CertificateArn = 'arn:aws:acm:us-east-1:576997243977:certificate/04b1e86d-b723-4380-956e-2a5da1bbfe4e'
+WwwBucketName = 'www.globalphidelist.tech'
+RootBucketName = 'globalphidelist.tech'
