@@ -1,0 +1,7 @@
+[deploy]
+bucket = 'cfn-cruddur-artifacts'
+region = 'us-east-1'
+stack_name = 'CrdSrvBackendFlask'
+[parameters]
+EnvFrontendUrl = 'https://globalphidelist.tech'
+EnvBackendUrl = 'https://api.globalphidelist.tech'
