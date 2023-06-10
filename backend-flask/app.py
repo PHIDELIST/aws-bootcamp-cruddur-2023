@@ -152,10 +152,7 @@ def health_check():
 @jwt_required()
 def data_message_groups():
   model = MessageGroups.run(cognito_user_id=g.cognito_user_id)
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
+  return model_json(model)
 
 @app.route("/api/messages/<string:message_group_uuid>", methods=['GET'])
 @jwt_required()
@@ -164,10 +161,7 @@ def data_messages(message_group_uuid):
       cognito_user_id=g.cognito_user_id,
       message_group_uuid=message_group_uuid
     )
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
+  return model_json(model)
 
 @app.route("/api/messages", methods=['POST','OPTIONS'])
 @cross_origin()
@@ -192,10 +186,7 @@ def data_create_message():
       message_group_uuid=message_group_uuid,
       cognito_user_id=g.cognito_user_id
     )
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
+    return model_json(model)
 def default_home_feed(e):
   # unauthenicatied request
   app.logger.debug(e)
@@ -221,20 +212,13 @@ def data_notifications():
 #@xray_recorder.capture('activities_users')
 def data_handle(handle):
   model = UserActivities.run(handle)
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
+  return model_json(model)
 
 @app.route("/api/activities/search", methods=['GET'])
 def data_search():
   term = request.args.get('term')
   model = SearchActivities.run(term)
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
-  return
+  return model_json(model)
 
 @app.route("/api/activities", methods=['POST','OPTIONS'])
 @cross_origin()
@@ -243,10 +227,7 @@ def data_activities():
   message = request.json['message']
   ttl = request.json['ttl']
   model = CreateActivity.run(message, g.cognito_user_id, ttl)
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
+  return model_json(model)
 
 @app.route("/api/activities/<string:activity_uuid>", methods=['GET'])
 @xray_recorder.capture('activities_show')
@@ -260,11 +241,7 @@ def data_activities_reply(activity_uuid):
   user_handle  = 'andrewbrown'
   message = request.json['message']
   model = CreateReply.run(message, user_handle, activity_uuid)
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
-  return
+  return model_json(model)
 
 @app.route("/api/users/@<string:handle>/short", methods=['GET'])
 def data_users_short(handle):
@@ -282,10 +259,7 @@ def data_update_profile():
     bio=bio,
     display_name=display_name
   )
-  if model['errors'] is not None:
-    return model['errors'], 422
-  else:
-    return model['data'], 200
+  return model_json(model)
 
 
 if __name__ == "__main__":
