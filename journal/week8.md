@@ -387,7 +387,7 @@ Go to the root directory of ``` SERVERLESS-IMAGE-PROCESSING-CDK``` dir then;
 it will only build the typescript
 it is used to catch errors prematurely and enables the CDK to abandon resources that can't build due to some reasons and build the rest of the resources.
 ```.sh
-npm install aws-cdk -g
+npm run build
 ```
 + CDK synth :
 This will synthesize the AWS CloudFormation stack(s) that represent your infrastructure as code.
