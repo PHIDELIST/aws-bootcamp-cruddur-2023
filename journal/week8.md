@@ -334,7 +334,7 @@ async function processImage(image,width,height){
   return processedImage;
 }
 
-// Define a function to upload the processed image to S3
+// Define a function to upload the processed image to S3 bucket
 async function uploadProcessedImage(client,dstBucket,dstKey,image){
   // Define the parameters for uploading the object to S3
   const params = {
